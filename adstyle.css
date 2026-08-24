@@ -1,0 +1,1038 @@
+/* ==========================================================================
+   TETOTIM BLESSED HOPE SCHOOL - ADMISSIONS STYLESHEET
+   ========================================================================== */
+
+/* Base Layout & Page Setup */
+.admissions-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: #f9f6f0;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   HEADER & NAVIGATION
+   ========================================================================== */
+.admissions-page .header {
+  position: relative;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 5%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e4dfd5;
+  width: 100%;
+}
+
+.admissions-page .div {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.admissions-page .logo {
+  width: 48px;
+  height: auto;
+  aspect-ratio: 48 / 72;
+  object-fit: contain;
+}
+
+.admissions-page .title-stack {
+  display: inline-flex;
+  gap: 2px;
+  flex-direction: column;
+}
+
+.admissions-page .school-name {
+  font-family: "Geist-Bold", sans-serif;
+  font-weight: 700;
+  color: #0a1931;
+  font-size: 20px;
+}
+
+.admissions-page .motto {
+  font-family: "Instrument Serif-Italic", serif;
+  font-weight: 400;
+  font-style: italic;
+  color: #e25b38;
+  font-size: 16px;
+}
+
+.admissions-page .navbar {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.admissions-page .text-wrapper {
+  font-family: "Geist-Regular", sans-serif;
+  font-weight: 400;
+  color: #1c1c1c;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.admissions-page .text-wrapper:hover {
+  color: #e25b38;
+}
+
+.admissions-page .text-wrapper-2 {
+  font-family: "Geist-SemiBold", sans-serif;
+  font-weight: 600;
+  color: #e25b38;
+  font-size: 14px;
+}
+
+.admissions-page .CTA-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: #0a1931;
+  border-radius: 100px;
+  color: #ffffff;
+  font-family: "Geist-SemiBold", sans-serif;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.admissions-page .CTA-button:hover {
+  background-color: #e25b38;
+}
+
+/* Mobile Menu Toggle Button */
+.menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #0a1931;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Dropdown Drawer (<= 768px) */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex !important;
+  }
+
+  .admissions-page .navbar {
+    display: none;
+  }
+
+  .admissions-page .navbar.mobile-menu-open {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 24px 5%;
+    border-bottom: 3px solid #e25b38;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    gap: 16px;
+  }
+
+  .admissions-page .navbar.mobile-menu-open a,
+  .admissions-page .navbar.mobile-menu-open .text-wrapper,
+  .admissions-page .navbar.mobile-menu-open .text-wrapper-2 {
+    color: #0a1931 !important;
+    font-size: 16px;
+    width: 100%;
+    padding: 8px 0;
+    display: block;
+  }
+
+  .admissions-page .navbar.mobile-menu-open .CTA-button {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.admissions-page .admissions-hero {
+  display: flex;
+  min-height: 580px;
+  width: 100%;
+  background-color: #f9f6f0;
+}
+
+.admissions-page .hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  padding: 80px 5%;
+  flex: 1;
+}
+
+.admissions-page .title-group {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  flex-direction: column;
+}
+
+.admissions-page .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admissions-page .rectangle {
+  width: 24px;
+  height: 2px;
+  background-color: #e25b38;
+}
+
+.admissions-page .text-wrapper-4 {
+  font-family: "Geist-Bold", sans-serif;
+  font-weight: 700;
+  color: #e25b38;
+  font-size: 12px;
+  letter-spacing: 0.18px;
+}
+
+.admissions-page .headline {
+  font-family: "Instrument Serif-Regular", serif;
+  font-weight: 400;
+  color: #0a1931;
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.1;
+}
+
+.admissions-page .description {
+  font-family: "Geist-Regular", sans-serif;
+  font-weight: 400;
+  color: #6e7787;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.admissions-page .actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.admissions-page .primary-button {
+  display: inline-flex;
+  padding: 16px 32px;
+  background-color: #e25b38;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.admissions-page .text-wrapper-5 {
+  font-family: "Geist-Bold", sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.admissions-page .secondary-button {
+  display: inline-flex;
+  padding: 16px 32px;
+  border-radius: 8px;
+  border: 1.5px solid #0a1931;
+  cursor: pointer;
+}
+
+.admissions-page .text-wrapper-6 {
+  font-family: "Geist-Bold", sans-serif;
+  font-weight: 700;
+  color: #0a1931;
+  font-size: 15px;
+}
+
+.admissions-page .hero-visual {
+  position: relative;
+  flex: 1;
+  min-height: 400px;
+}
+
+.admissions-page .main-photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.admissions-page .gradient-scrim {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, rgba(10, 25, 49, 0.6) 0%, rgba(0, 0, 0, 0) 60%);
+}
+
+.admissions-page .float-card {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  gap: 12px;
+  padding: 24px;
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.admissions-page .secure-nurturing {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #e25b38;
+  font-size: 32px;
+}
+
+.admissions-page .text-wrapper-7 {
+  font-family: "Geist-SemiBold", sans-serif;
+  color: #0a1931;
+  font-size: 14px;
+}
+
+.admissions-page .p {
+  font-family: "Geist-Regular", sans-serif;
+  color: #6e7787;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   ENROLLMENT PROCESS
+   ========================================================================== */
+.admissions-page .div-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 80px 5%;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.admissions-page .section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.admissions-page .text-wrapper-8 {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #0a1931;
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+.admissions-page .cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.admissions-page .step-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e4dfd5;
+  height: 100%;
+}
+
+.admissions-page .div-3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.admissions-page .badge {
+  display: inline-flex;
+  padding: 6px 12px;
+  background-color: #f9f6f0;
+  border-radius: 100px;
+}
+
+.admissions-page .text-wrapper-9 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #e25b38;
+  font-size: 12px;
+}
+
+.admissions-page .step-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.admissions-page .vector-wrapper {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.admissions-page .vector,
+.admissions-page .img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.admissions-page .text-wrapper-10 {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #0a1931;
+  font-size: 28px;
+}
+
+.admissions-page .text-wrapper-11 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #6e7787;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   TUITION TABLE
+   ========================================================================== */
+.admissions-page .div-4 {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 80px 5%;
+  width: 100%;
+  background-color: #f9f6f0;
+}
+
+.admissions-page .section-header-2 {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+}
+
+.admissions-page .header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admissions-page .text-wrapper-12 {
+  max-width: 420px;
+  font-family: "Geist-Regular", sans-serif;
+  color: #6e7787;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.admissions-page .table-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow-x: auto;
+  border: 1px solid #e4dfd5;
+  width: 100%;
+}
+
+.admissions-page .table-header {
+  display: flex;
+  padding: 20px 24px;
+  background-color: #0a1931;
+  min-width: 600px;
+}
+
+.admissions-page .text-wrapper-13 {
+  flex: 1;
+  font-family: "Geist-Bold", sans-serif;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.admissions-page .text-wrapper-14 {
+  width: 180px;
+  font-family: "Geist-Bold", sans-serif;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.admissions-page .tuition-row {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e4dfd5;
+  min-width: 600px;
+}
+
+.admissions-page .text-wrapper-15 {
+  flex: 1;
+  font-family: "Geist-SemiBold", sans-serif;
+  color: #0a1931;
+  font-size: 15px;
+}
+
+.admissions-page .text-wrapper-16 {
+  width: 180px;
+  font-family: "Geist-Regular", sans-serif;
+  color: #1c1c1c;
+  font-size: 15px;
+}
+
+.admissions-page .text-wrapper-17 {
+  width: 180px;
+  font-family: "Geist-Bold", sans-serif;
+  color: #e25b38;
+  font-size: 15px;
+}
+
+.admissions-page .notice-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e4dfd5;
+  width: 100%;
+}
+
+.admissions-page .div-wrapper {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.admissions-page .vector-2 {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.admissions-page .please-note-all {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.admissions-page .span {
+  font-family: "Geist-Bold", sans-serif;
+  color: #0a1931;
+}
+
+.admissions-page .text-wrapper-18 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #6e7787;
+}
+
+/* ==========================================================================
+   CHECKLIST & TIMELINE
+   ========================================================================== */
+.admissions-page .rows {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  width: 100%;
+}
+
+.admissions-page .facility-row {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  width: 100%;
+}
+
+.admissions-page .text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+.admissions-page .tag {
+  display: inline-flex;
+  padding: 6px 12px;
+  background-color: #e25b38;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.admissions-page .text-wrapper-19 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #ffffff;
+  font-size: 11px;
+}
+
+.admissions-page .official-academic {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #0a1931;
+  font-size: clamp(28px, 3.5vw, 36px);
+}
+
+.admissions-page .text-wrapper-20 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #6e7787;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.admissions-page .checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.admissions-page .checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.admissions-page .div-wrapper-2 {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.admissions-page .vector-3 {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.admissions-page .text-wrapper-21 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #1c1c1c;
+  font-size: 14px;
+}
+
+.admissions-page .image-col {
+  display: flex;
+  height: 340px;
+  flex: 1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.admissions-page .rectangle-2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.admissions-page .div-5 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.admissions-page .timeline-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 24px;
+  width: 100%;
+}
+
+.admissions-page .timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  position: relative;
+}
+
+.admissions-page .date-col {
+  width: 180px;
+  flex-shrink: 0;
+}
+
+.admissions-page .text-wrapper-22 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #e25b38;
+  font-size: 15px;
+}
+
+.admissions-page .node-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.admissions-page .ellipse {
+  width: 16px;
+  height: 16px;
+  background-color: #e25b38;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+}
+
+.admissions-page .text-col-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 40px;
+  flex: 1;
+}
+
+.admissions-page .text-wrapper-23 {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #0a1931;
+  font-size: 24px;
+}
+
+/* ==========================================================================
+   FAQS & CTA
+   ========================================================================== */
+.admissions-page .faq-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e4dfd5;
+  width: 100%;
+}
+
+.admissions-page .text-wrapper-24 {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #0a1931;
+  font-size: 22px;
+}
+
+.admissions-page .admissions-CTA {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 32px;
+  padding: 80px 5%;
+  width: 100%;
+  background-color: #0a1931;
+}
+
+.admissions-page .text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 800px;
+}
+
+.admissions-page .still-have {
+  font-family: "Geist-Bold", sans-serif;
+  color: #e25b38;
+  font-size: 12px;
+  letter-spacing: 0.24px;
+}
+
+.admissions-page .text-wrapper-25 {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #ffffff;
+  font-size: clamp(32px, 5vw, 48px);
+}
+
+.admissions-page .text-wrapper-26 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #e4dfd5;
+  font-size: 15px;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+.admissions-page .CTA-button-2 {
+  display: inline-flex;
+  padding: 16px 40px;
+  background-color: #e25b38;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.admissions-page .text-wrapper-27 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.admissions-page .footer {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding: 80px 5% 40px;
+  background-color: #0a1931;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+.admissions-page .footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.admissions-page .brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 360px;
+}
+
+.admissions-page .logo-2 {
+  width: 40px;
+  height: auto;
+  aspect-ratio: 40 / 60;
+  object-fit: contain;
+}
+
+.admissions-page .text-wrapper-28 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.admissions-page .text-wrapper-29 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #e4dfd5;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.admissions-page .contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admissions-page .frame {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admissions-page .text-wrapper-31 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.admissions-page .links-col,
+.admissions-page .links-col-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admissions-page .text-wrapper-32 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.admissions-page .text-wrapper-33 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #e4dfd5;
+  font-size: 13px;
+}
+
+.admissions-page .whatsapp-btn {
+  display: inline-flex;
+  gap: 8px;
+  padding: 10px 16px;
+  background-color: #25d366;
+  border-radius: 100px;
+  align-items: center;
+}
+
+.admissions-page .text-wrapper-34 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.admissions-page .text-wrapper-35 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #e4dfd5;
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 220px;
+}
+
+.admissions-page .footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+.admissions-page .text-wrapper-36 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #e4dfd5;
+  font-size: 12px;
+}
+
+.admissions-page .legal-links {
+  display: flex;
+  gap: 24px;
+}
+
+.admissions-page .vector-5 {
+  width: auto;
+  height: 20px;
+}
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .admissions-page .admissions-hero {
+    flex-direction: column;
+  }
+
+  .admissions-page .hero-text {
+    padding: 60px 5%;
+  }
+
+  .admissions-page .hero-visual {
+    min-height: 350px;
+    width: 100%;
+  }
+
+  .admissions-page .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admissions-page .footer-top {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .admissions-page .hero-text {
+    padding: 40px 5%;
+    gap: 24px;
+  }
+
+  .admissions-page .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .admissions-page .primary-button,
+  .admissions-page .secondary-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .admissions-page .float-card {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: calc(100% - 32px);
+    margin: -40px 16px 20px 16px;
+  }
+
+  .admissions-page .hero-visual {
+    min-height: 280px;
+  }
+
+  .admissions-page .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admissions-page .section-header-2 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admissions-page .facility-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .admissions-page .image-col {
+    height: 220px;
+    width: 100%;
+  }
+
+  .admissions-page .timeline-container {
+    padding-left: 0;
+  }
+
+  .admissions-page .timeline-item {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .admissions-page .node-col {
+    display: none;
+  }
+
+  .admissions-page .date-col {
+    width: 100%;
+  }
+
+  .admissions-page .footer-top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .admissions-page .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}

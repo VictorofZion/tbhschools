@@ -1,0 +1,1052 @@
+/* ==========================================================================
+   TETOTIM BLESSED HOPE SCHOOL - MAIN STYLESHEET
+   ========================================================================== */
+
+/* Base Layout & Page Setup */
+.homepage-variation {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: #f9f6f0;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   HEADER & NAVIGATION
+   ========================================================================== */
+.homepage-variation .header {
+  position: relative;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 5%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e4dfd5;
+  top: 0;
+}
+
+.homepage-variation .div {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.homepage-variation .logo {
+  width: 48px;
+  height: auto;
+  aspect-ratio: 48 / 72;
+  object-fit: contain;
+}
+
+.homepage-variation .title-stack {
+  display: inline-flex;
+  gap: 2px;
+  flex-direction: column;
+}
+
+.homepage-variation .school-name {
+  font-family: "Geist-Bold", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #0a1931;
+}
+
+.homepage-variation .motto {
+  font-family: "Instrument Serif-Italic", serif;
+  font-weight: 400;
+  font-style: italic;
+  color: #e25b38;
+  font-size: 16px;
+}
+
+.homepage-variation .navbar {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.homepage-variation .text-wrapper {
+  font-family: "Geist-SemiBold", sans-serif;
+  font-weight: 600;
+  color: #e25b38;
+  font-size: 14px;
+}
+
+.homepage-variation .text-wrapper-2 {
+  font-family: "Geist-Regular", sans-serif;
+  font-weight: 400;
+  color: #1c1c1c;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.homepage-variation .text-wrapper-2:hover {
+  color: #e25b38;
+}
+
+.homepage-variation .CTA-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  color: #ffffff;
+  background-color: #0a1931;
+  border-radius: 100px;
+  font-family: "Geist-SemiBold", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.homepage-variation .CTA-button:hover {
+  background-color: #e25b38;
+}
+
+/* Mobile Menu Toggle Button */
+.menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #0a1931;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile & Tablet Navigation Drawer (<= 768px) */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex !important;
+  }
+
+  .homepage-variation .navbar {
+    display: none;
+  }
+
+  .homepage-variation .navbar.mobile-menu-open {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 24px 5%;
+    border-bottom: 3px solid #e25b38;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    gap: 16px;
+  }
+
+  .homepage-variation .navbar.mobile-menu-open a,
+  .homepage-variation .navbar.mobile-menu-open .text-wrapper,
+  .homepage-variation .navbar.mobile-menu-open .text-wrapper-2 {
+    color: #0a1931 !important;
+    font-size: 16px;
+    width: 100%;
+    padding: 8px 0;
+    display: block;
+  }
+
+  .homepage-variation .navbar.mobile-menu-open .CTA-button {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.homepage-variation .hero-section {
+  display: flex;
+  min-height: 620px;
+  width: 100%;
+  background-color: #f9f6f0;
+}
+
+.homepage-variation .hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  padding: 80px 5%;
+  flex: 1;
+}
+
+.homepage-variation .title-group {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  flex-direction: column;
+}
+
+.homepage-variation .div-2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.homepage-variation .rectangle {
+  width: 24px;
+  height: 2px;
+  background-color: #e25b38;
+}
+
+.homepage-variation .text-wrapper-4 {
+  font-family: "Geist-Bold", sans-serif;
+  font-weight: 700;
+  color: #e25b38;
+  font-size: 12px;
+  letter-spacing: 0.18px;
+}
+
+.homepage-variation .headline {
+  font-family: "Instrument Serif-Regular", serif;
+  font-weight: 400;
+  color: #0a1931;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+}
+
+.homepage-variation .description {
+  font-family: "Geist-Regular", sans-serif;
+  font-weight: 400;
+  color: #6e7787;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 580px;
+}
+
+.homepage-variation .div-3 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.homepage-variation .portal-BTN {
+  display: inline-flex;
+  padding: 16px 32px;
+  background-color: #e25b38;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.homepage-variation .text-wrapper-5 {
+  font-family: "Geist-SemiBold", sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.homepage-variation .gallery-BTN {
+  display: inline-flex;
+  padding: 16px 32px;
+  border-radius: 8px;
+  border: 1.5px solid #0a1931;
+  cursor: pointer;
+}
+
+.homepage-variation .text-wrapper-6 {
+  font-family: "Geist-SemiBold", sans-serif;
+  font-weight: 600;
+  color: #0a1931;
+  font-size: 15px;
+}
+
+.homepage-variation .hero-visual {
+  position: relative;
+  flex: 1;
+  min-height: 400px;
+}
+
+.homepage-variation .main-photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.homepage-variation .gradient-scrim {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, rgba(10, 25, 49, 0.6) 0%, rgba(0, 0, 0, 0) 60%);
+}
+
+.homepage-variation .float-card {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  gap: 12px;
+  padding: 24px;
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.homepage-variation .text-wrapper-7 {
+  font-size: 32px;
+  font-family: "Instrument Serif-Regular", serif;
+  color: #e25b38;
+}
+
+.homepage-variation .text-wrapper-8 {
+  font-family: "Geist-SemiBold", sans-serif;
+  font-weight: 600;
+  color: #0a1931;
+  font-size: 14px;
+}
+
+.homepage-variation .p {
+  font-family: "Geist-Regular", sans-serif;
+  color: #6e7787;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   PHILOSOPHY & STATS
+   ========================================================================== */
+.homepage-variation .philosophy-section {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding: 80px 5%;
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.homepage-variation .philosophy-row {
+  display: flex;
+  gap: 60px;
+  width: 100%;
+}
+
+.homepage-variation .col-left {
+  flex: 0 0 40%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.homepage-variation .text-wrapper-9 {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #0a1931;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+}
+
+.homepage-variation .rectangle-2 {
+  width: 80px;
+  height: 4px;
+  background-color: #e25b38;
+}
+
+.homepage-variation .div-4 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.homepage-variation .text-wrapper-10 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #1c1c1c;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.homepage-variation .text-wrapper-11 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #6e7787;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.homepage-variation .stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 40px;
+  width: 100%;
+  background-color: #f9f6f0;
+  border-radius: 16px;
+}
+
+.homepage-variation .stat-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.homepage-variation .text-wrapper-12 {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #e25b38;
+  font-size: clamp(32px, 3vw, 40px);
+}
+
+.homepage-variation .text-wrapper-13 {
+  font-family: "Geist-SemiBold", sans-serif;
+  color: #0a1931;
+  font-size: 13px;
+}
+
+/* ==========================================================================
+   ACADEMIC DIVISIONS / PROGRAMS
+   ========================================================================== */
+.homepage-variation .div-5 {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 80px 5%;
+  width: 100%;
+  background-color: #f9f6f0;
+}
+
+.homepage-variation .section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+}
+
+.homepage-variation .header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.homepage-variation .text-wrapper-14 {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #0a1931;
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+.homepage-variation .text-wrapper-15 {
+  max-width: 380px;
+  font-family: "Geist-Regular", sans-serif;
+  color: #6e7787;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.homepage-variation .div-6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.homepage-variation .program-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e4dfd5;
+  height: 100%;
+}
+
+.homepage-variation .card-image {
+  height: 220px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.homepage-variation .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  flex: 1;
+}
+
+.homepage-variation .text-wrapper-16 {
+  font-family: "Instrument Serif-Regular", serif;
+  font-size: 28px;
+  color: #0a1931;
+}
+
+.homepage-variation .text-wrapper-17 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #6e7787;
+  font-size: 14px;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.homepage-variation .text-wrapper-18 {
+  font-family: "Geist-SemiBold", sans-serif;
+  color: #e25b38;
+  font-size: 13px;
+}
+
+.homepage-variation .div-wrapper {
+  display: flex;
+  width: 14px;
+  height: 14px;
+  align-items: center;
+  justify-content: center;
+}
+
+.homepage-variation .vector-wrapper {
+  width: 14px;
+  height: 14px;
+  position: relative;
+}
+
+.homepage-variation .vector {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.homepage-variation .vector-2 {
+  width: auto;
+  height: 20px;
+}
+
+/* ==========================================================================
+   FACILITIES
+   ========================================================================== */
+.homepage-variation .facilities-section {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding: 80px 5%;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.homepage-variation .section-header-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.homepage-variation .rows {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  width: 100%;
+}
+
+.homepage-variation .facility-row {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+}
+
+
+
+.homepage-variation .tag {
+  display: inline-flex;
+  padding: 6px 12px;
+  background-color: #e25b38;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.homepage-variation .text-wrapper-19 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #ffffff;
+  font-size: 11px;
+}
+
+.homepage-variation .text-wrapper-20 {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #0a1931;
+  font-size: clamp(28px, 3.5vw, 36px);
+}
+
+.homepage-variation .text-wrapper-21 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #6e7787;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.homepage-variation .image-col {
+  display: flex;
+  height: 340px;
+  flex: 1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.homepage-variation .img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   LEADERSHIP & TESTIMONIALS
+   ========================================================================== */
+.homepage-variation .section-header-3 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.homepage-variation .profile-card {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e4dfd5;
+  flex: 1;
+}
+
+.homepage-variation .avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.homepage-variation .profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.homepage-variation .text-wrapper-22 {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #0a1931;
+  font-size: 28px;
+}
+
+.homepage-variation .text-wrapper-23 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #e25b38;
+  font-size: 13px;
+}
+
+.homepage-variation .text-wrapper-24 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #6e7787;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.homepage-variation .testimonials-section {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 80px 5%;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.homepage-variation .testimonial-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e4dfd5;
+  text-align: center;
+  flex: 1;
+}
+
+.homepage-variation .text-wrapper-25 {
+  font-family: "Instrument Serif-Italic", serif;
+  font-style: italic;
+  color: #1c1c1c;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.homepage-variation .rectangle-3 {
+  width: 12px;
+  height: 1px;
+  background-color: #e25b38;
+}
+
+.homepage-variation .text-wrapper-26 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #0a1931;
+  font-size: 12px;
+}
+
+/* ==========================================================================
+   GALLERY & ADMISSIONS CTA
+   ========================================================================== */
+.homepage-variation .gallery-section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 80px 5%;
+  width: 100%;
+  background-color: #f9f6f0;
+}
+
+.homepage-variation .section-header-4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.homepage-variation .text-wrapper-27 {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #0a1931;
+  font-size: clamp(28px, 4vw, 40px);
+}
+
+.homepage-variation .text-wrapper-28 {
+  font-family: "Geist-SemiBold", sans-serif;
+  color: #e25b38;
+  font-size: 14px;
+}
+
+.homepage-variation .gallery-frame {
+  height: 220px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.homepage-variation .admissions-CTA {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 32px;
+  padding: 80px 5%;
+  width: 100%;
+  background-color: #0a1931;
+}
+
+.homepage-variation .text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 800px;
+}
+
+.homepage-variation .admissions-now-open {
+  font-family: "Geist-Bold", sans-serif;
+  color: #e25b38;
+  font-size: 12px;
+  letter-spacing: 0.24px;
+}
+
+.homepage-variation .text-wrapper-29 {
+  font-family: "Instrument Serif-Regular", serif;
+  color: #ffffff;
+  font-size: clamp(32px, 5vw, 48px);
+}
+
+.homepage-variation .text-wrapper-30 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #e4dfd5;
+  font-size: 15px;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+.homepage-variation .CTA-button-2 {
+  display: inline-flex;
+  padding: 16px 40px;
+  background-color: #e25b38;
+  border-radius: 100px;
+}
+
+.homepage-variation .text-wrapper-31 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.homepage-variation .footer {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding: 80px 5% 40px;
+  background-color: #0a1931;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+.homepage-variation .footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.homepage-variation .brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 360px;
+}
+
+.homepage-variation .logo-2 {
+  width: 40px;
+  height: auto;
+  aspect-ratio: 40 / 60;
+  object-fit: contain;
+}
+
+.homepage-variation .text-wrapper-32 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.homepage-variation .text-wrapper-33 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #e4dfd5;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.homepage-variation .contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.homepage-variation .frame {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.homepage-variation .text-wrapper-35 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.homepage-variation .links-col,
+.homepage-variation .links-col-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.homepage-variation .text-wrapper-36 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.homepage-variation .text-wrapper-37 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #e4dfd5;
+  font-size: 13px;
+}
+
+.homepage-variation .whatsapp-btn {
+  display: inline-flex;
+  gap: 8px;
+  padding: 10px 16px;
+  background-color: #25d366;
+  border-radius: 100px;
+  align-items: center;
+}
+
+.homepage-variation .text-wrapper-38 {
+  font-family: "Geist-Bold", sans-serif;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.homepage-variation .text-wrapper-39 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #e4dfd5;
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 220px;
+}
+
+.homepage-variation .footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+.homepage-variation .text-wrapper-40 {
+  font-family: "Geist-Regular", sans-serif;
+  color: #e4dfd5;
+  font-size: 12px;
+}
+
+.homepage-variation .legal-links {
+  display: flex;
+  gap: 24px;
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT ADJUSTMENTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .homepage-variation .hero-section {
+    flex-direction: column;
+  }
+
+  .homepage-variation .hero-text {
+    padding: 60px 5%;
+  }
+
+  .homepage-variation .hero-visual {
+    min-height: 350px;
+    width: 100%;
+  }
+
+  .homepage-variation .philosophy-row {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .homepage-variation .col-left {
+    max-width: 100%;
+  }
+
+  .homepage-variation .div-6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .homepage-variation .footer-top {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .homepage-variation .hero-text {
+    padding: 40px 5%;
+    gap: 24px;
+  }
+
+  .homepage-variation .float-card {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: calc(100% - 32px);
+    margin: -40px 16px 20px 16px;
+  }
+
+  .homepage-variation .hero-visual {
+    min-height: 280px;
+  }
+
+  .homepage-variation .div-3 {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .homepage-variation .portal-BTN,
+  .homepage-variation .gallery-BTN {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .homepage-variation .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 12px;
+    padding: 24px 16px;
+  }
+
+  .homepage-variation .div-6 {
+    grid-template-columns: 1fr;
+  }
+
+  .homepage-variation .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .homepage-variation .facility-row,
+  .homepage-variation .facility-row:nth-child(even) {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .homepage-variation .image-col {
+    height: 220px;
+    width: 100%;
+  }
+
+  .homepage-variation .profile-card {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 24px;
+  }
+
+  .homepage-variation .footer-top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .homepage-variation .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}

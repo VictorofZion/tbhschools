@@ -1,0 +1,17 @@
+:root {
+  --white: rgba(255, 255, 255, 1);
+  --text-color: rgba(28, 28, 28, 1);
+  --grey-text: rgba(110, 110, 110, 1);
+  --grey-bg: rgba(183, 182, 181, 1);
+  --outlinestroke: rgba(224, 224, 224, 1);
+  --foundation-primarylight: rgba(230, 246, 244, 1);
+  --foundation-primarylight-hover: rgba(217, 242, 239, 1);
+  --foundation-primarylight-active: rgba(176, 228, 221, 1);
+  --foundation-primarynormal: rgba(0, 169, 145, 1);
+  --foundation-primarynormal-hover: rgba(0, 152, 131, 1);
+  --foundation-primarynormal-active: rgba(0, 135, 116, 1);
+  --foundation-primarydark: rgba(0, 127, 109, 1);
+  --foundation-primarydark-hover: rgba(0, 101, 87, 1);
+  --foundation-primarydark-active: rgba(0, 76, 65, 1);
+  --foundation-primarydarker: rgba(0, 59, 51, 1);
+}

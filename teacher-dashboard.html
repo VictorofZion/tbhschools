@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teacher Portal - Tetotim Blessed Hope School</title>
+  <link rel="stylesheet" href="global.css" />
+  <style>
+    :root {
+      --primary-navy: #0a1931;
+      --accent-coral: #e25b38;
+      --bg-cream: #f9f6f0;
+      --border-color: #e4dfd5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Geist-Regular', sans-serif;
+      background-color: var(--bg-cream);
+      color: #1c1c1c;
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 260px;
+      background-color: var(--primary-navy);
+      color: #ffffff;
+      padding: 32px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+    .brand img { width: 36px; height: auto; }
+    .brand h2 { font-family: 'Geist-Bold', sans-serif; font-size: 16px; margin: 0; }
+    
+    .nav-links { display: flex; flex-direction: column; gap: 8px; }
+    .nav-btn {
+      background: transparent;
+      border: none;
+      color: #e4dfd5;
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .nav-btn.active, .nav-btn:hover {
+      background-color: var(--accent-coral);
+      color: #ffffff;
+    }
+
+    .main-content { flex: 1; padding: 40px; overflow-y: auto; }
+    .header-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .teacher-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-coral);
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .card {
+      background: #ffffff;
+      padding: 28px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      max-width: 650px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    label { font-size: 13px; font-weight: 600; color: var(--primary-navy); }
+    input, select, textarea {
+      padding: 10px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+    textarea { resize: vertical; min-height: 80px; }
+    .btn-submit {
+      background-color: var(--accent-coral);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+    }
+    .logout-btn {
+      background-color: rgba(255,255,255,0.1);
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Progress Loader Modal Styles */
+    .progress-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10, 25, 49, 0.85);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+    .progress-modal-card {
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .progress-track {
+      width: 100%;
+      height: 12px;
+      background: #e4dfd5;
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 16px 0 8px 0;
+    }
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--accent-coral);
+      transition: width 0.2s ease;
+    }
+    .progress-percent-text {
+      font-family: 'Geist-Bold', sans-serif;
+      font-size: 14px;
+      color: var(--primary-navy);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="brand">
+        <img src="items/logo.png" alt="Logo" />
+        <h2>TBHS Teacher</h2>
+      </div>
+      <nav class="nav-links">
+        <button class="nav-btn active" onclick="switchTab('resultsTab', event)">Upload Term Results</button>
+        <button class="nav-btn" onclick="switchTab('createExamTab', event)">Create CBT Assessment</button>
+        <button class="nav-btn" onclick="switchTab('addQuestionsTab', event)">Add Exam Questions</button>
+        <button class="nav-btn" onclick="switchTab('assignmentTab', event)">Upload Notes &amp; Assignments</button>
+      </nav>
+    </div>
+    <button class="logout-btn" onclick="logout()">Sign Out</button>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="header-bar">
+      <img id="teacherAvatar" src="https://via.placeholder.com/150" class="teacher-avatar" alt="Teacher Avatar" />
+      <div>
+        <h1 id="tabTitle" style="font-family: 'Instrument Serif-Regular', serif; font-size: 36px; color: var(--primary-navy); margin: 0;">Academic Management</h1>
+        <span id="teacherName" style="color: var(--accent-coral); font-weight: 600;">Welcome, Teacher</span>
+      </div>
+    </div>
+
+    <!-- Tab 1: Upload Results -->
+    <section id="resultsTab" class="tab-content active">
+      <div class="card">
+        <form id="resultForm" onsubmit="handleResultUpload(event)">
+          <div class="form-group">
+            <label>Select Student</label>
+            <select id="studentId" required>
+              <option value="">-- Loading Student Roster --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" id="subject" placeholder="Mathematics, English, Physics" required />
+          </div>
+          <div class="form-group">
+            <label>Continuous Assessment (Test Score / 40)</label>
+            <input type="number" id="testScore" min="0" max="40" step="0.1" required />
+          </div>
+          <div class="form-group">
+            <label>Exam Score (/ 60)</label>
+            <input type="number" id="examScore" min="0" max="60" step="0.1" required />
+          </div>
+          <div class="form-group">
+            <label>Term</label>
+            <select id="term" required>
+              <option value="1st Term">1st Term</option>
+              <option value="2nd Term">2nd Term</option>
+              <option value="3rd Term">3rd Term</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Academic Session</label>
+            <input type="text" id="session" value="2026/2027" required />
+          </div>
+          <button type="submit" class="btn-submit">Submit Grade Record</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Tab 2: Create CBT Assessment (Test or Exam) -->
+    <section id="createExamTab" class="tab-content">
+      <div class="card">
+        <form id="createExamForm" onsubmit="handleCreateExam(event)">
+          <div class="form-group">
+            <label>Assessment Type</label>
+            <select id="examType" required>
+              <option value="test">Continuous Assessment (CBT Test / 40 Marks)</option>
+              <option value="exam">Terminal Examination (CBT Exam / 60 Marks)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Assessment Title</label>
+            <input type="text" id="examTitle" placeholder="JS1 First Term Mathematics CA 1" required />
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" id="examSubject" placeholder="Mathematics" required />
+          </div>
+          <div class="form-group">
+            <label>Class Level</label>
+            <input type="text" id="examClass" placeholder="JS1, SS2" required />
+          </div>
+          <div class="form-group">
+            <label>Duration (Minutes)</label>
+            <input type="number" id="examDuration" value="20" min="5" max="180" required />
+          </div>
+          <button type="submit" class="btn-submit">Publish Assessment Shell</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Tab 3: Add Questions -->
+    <section id="addQuestionsTab" class="tab-content">
+      <div class="card">
+        <form id="addQuestionForm" onsubmit="handleAddQuestion(event)">
+          <div class="form-group">
+            <label>Exam UUID</label>
+            <input type="text" id="qExamId" placeholder="Exam UUID" required />
+          </div>
+          <div class="form-group">
+            <label>Question Text</label>
+            <textarea id="qText" placeholder="Enter the examination question here..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Option A</label>
+            <input type="text" id="qOptA" required />
+          </div>
+          <div class="form-group">
+            <label>Option B</label>
+            <input type="text" id="qOptB" required />
+          </div>
+          <div class="form-group">
+            <label>Option C</label>
+            <input type="text" id="qOptC" required />
+          </div>
+          <div class="form-group">
+            <label>Option D</label>
+            <input type="text" id="qOptD" required />
+          </div>
+          <div class="form-group">
+            <label>Correct Option Key</label>
+            <select id="qCorrect" required>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-submit">Save Question</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Tab 4: Upload Class Notes & Assignments -->
+    <section id="assignmentTab" class="tab-content">
+      <div class="card">
+        <form id="materialForm" onsubmit="handleUploadMaterial(event)">
+          <div class="form-group">
+            <label>Material Category</label>
+            <select id="matType" onchange="toggleDueDateField()" required>
+              <option value="note">Class Note / Study Material</option>
+              <option value="assignment">Class Assignment</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="matTitle" placeholder="e.g., Week 3 Physics Motion Notes" required />
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" id="matSubject" placeholder="Physics, Mathematics, English" required />
+          </div>
+          <div class="form-group">
+            <label>Target Class Level</label>
+            <input type="text" id="matClass" placeholder="JS1, SS2" required />
+          </div>
+          <div class="form-group">
+            <label>Instructions / Note Overview</label>
+            <textarea id="matDesc" placeholder="Brief explanation of the document contents..."></textarea>
+          </div>
+          <div class="form-group" id="dueDateGroup" style="display: none;">
+            <label>Submission Due Date</label>
+            <input type="date" id="matDueDate" />
+          </div>
+          <div class="form-group">
+            <label>Attach Document (.pdf, .doc, .docx, .txt)</label>
+            <input type="file" id="matFileInput" accept=".pdf,.doc,.docx,.txt" required />
+          </div>
+          <button type="submit" class="btn-submit">Publish Document to Class</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Universal Progress Loader Modal -->
+  <div class="progress-modal-overlay" id="progressModal">
+    <div class="progress-modal-card">
+      <h3 id="progressTitle" style="font-family: 'Instrument Serif-Regular', serif; font-size: 24px; color: #0a1931; margin: 0;">Processing...</h3>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressBar"></div>
+      </div>
+      <div class="progress-percent-text" id="progressPercent">0%</div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = "/api";
+    const token = localStorage.getItem("tbhs_token");
+    const user = JSON.parse(localStorage.getItem("tbhs_user") || "{}");
+
+    if (!token || (user.role !== "teacher" && user.role !== "admin")) {
+      window.location.href = "login.html";
+    }
+
+    document.getElementById("teacherName").innerText = `Welcome, ${user.full_name || 'Teacher'}`;
+    if (user.avatar_url) document.getElementById("teacherAvatar").src = user.avatar_url;
+
+    function switchTab(tabId, evt) {
+      document.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
+      document.querySelectorAll(".nav-btn").forEach(el => el.classList.remove("active"));
+      document.getElementById(tabId).classList.add("active");
+      if (evt && evt.target) evt.target.classList.add("active");
+    }
+
+    function toggleDueDateField() {
+      const type = document.getElementById("matType").value;
+      document.getElementById("dueDateGroup").style.display = type === "assignment" ? "flex" : "none";
+    }
+
+    // Progress Loader Helpers
+    function showProgress(title) {
+      document.getElementById("progressTitle").innerText = title;
+      document.getElementById("progressBar").style.width = "0%";
+      document.getElementById("progressPercent").innerText = "0%";
+      document.getElementById("progressModal").style.display = "flex";
+    }
+
+    function updateProgress(percent) {
+      const bounded = Math.min(100, Math.max(0, percent));
+      document.getElementById("progressBar").style.width = `${bounded}%`;
+      document.getElementById("progressPercent").innerText = `${bounded}%`;
+    }
+
+    function hideProgress() {
+      document.getElementById("progressModal").style.display = "none";
+    }
+
+    // 1. Fetch Roster for Student Dropdown
+    async function populateStudentDropdown() {
+      try {
+        const res = await fetch(`${API_BASE}/academic/students-list`, {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        const data = await res.json();
+        const select = document.getElementById("studentId");
+        select.innerHTML = '<option value="">-- Select Student --</option>';
+
+        if (data.students) {
+          data.students.forEach(s => {
+            const name = s.users ? s.users.full_name : "Unknown Student";
+            select.innerHTML += `<option value="${s.id}">${name} (${s.reg_number || 'No Reg'} | ${s.serial_number || 'No Serial'}) - ${s.class_level}</option>`;
+          });
+        }
+      } catch (err) {
+        console.error("Failed to load student roster", err);
+      }
+    }
+
+    // 2. Submit Academic Grades
+    async function handleResultUpload(e) {
+      e.preventDefault();
+      const payload = {
+        student_id: document.getElementById("studentId").value,
+        subject: document.getElementById("subject").value,
+        test_score: parseFloat(document.getElementById("testScore").value),
+        exam_score: parseFloat(document.getElementById("examScore").value),
+        term: document.getElementById("term").value,
+        session: document.getElementById("session").value
+      };
+
+      try {
+        const res = await fetch(`${API_BASE}/academic/results`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error);
+
+        alert("Academic grade record saved successfully!");
+        document.getElementById("resultForm").reset();
+      } catch (err) {
+        alert(err.message);
+      }
+    }
+
+    // 3. Create CBT Assessment Shell
+    async function handleCreateExam(e) {
+      e.preventDefault();
+      const payload = {
+        title: document.getElementById("examTitle").value,
+        subject: document.getElementById("examSubject").value,
+        class_level: document.getElementById("examClass").value,
+        duration_minutes: parseInt(document.getElementById("examDuration").value, 10),
+        type: document.getElementById("examType").value
+      };
+
+      try {
+        const res = await fetch(`${API_BASE}/exams/create`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error);
+
+        alert(`Assessment Created! Exam ID: ${data.exam.id}\n(Copy this ID to add questions in the next tab).`);
+        document.getElementById("qExamId").value = data.exam.id;
+        document.getElementById("createExamForm").reset();
+      } catch (err) {
+        alert(err.message);
+      }
+    }
+
+    // 4. Add Question to CBT Assessment
+    async function handleAddQuestion(e) {
+      e.preventDefault();
+      const exam_id = document.getElementById("qExamId").value;
+      const question = {
+        question_text: document.getElementById("qText").value,
+        option_a: document.getElementById("qOptA").value,
+        option_b: document.getElementById("qOptB").value,
+        option_c: document.getElementById("qOptC").value,
+        option_d: document.getElementById("qOptD").value,
+        correct_option: document.getElementById("qCorrect").value
+      };
+
+      try {
+        const res = await fetch(`${API_BASE}/exams/add-questions`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ exam_id, questions: [question] })
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error);
+
+        alert("Question added successfully!");
+        document.getElementById("qText").value = "";
+        document.getElementById("qOptA").value = "";
+        document.getElementById("qOptB").value = "";
+        document.getElementById("qOptC").value = "";
+        document.getElementById("qOptD").value = "";
+      } catch (err) {
+        alert(err.message);
+      }
+    }
+
+    // 5. Upload Material / Assignment with Progress Bar
+    async function handleUploadMaterial(e) {
+      e.preventDefault();
+
+      const fileInput = document.getElementById("matFileInput");
+      if (!fileInput.files || !fileInput.files[0]) {
+        alert("Please select a file to attach.");
+        return;
+      }
+
+      const file = fileInput.files[0];
+      if (file.size > 8 * 1024 * 1024) {
+        alert("File size exceeds 8MB limit.");
+        return;
+      }
+
+      try {
+        showProgress("Reading Document...");
+
+        const fileData = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onprogress = (evt) => {
+            if (evt.lengthComputable) {
+              const readPercent = Math.round((evt.loaded / evt.total) * 50);
+              updateProgress(readPercent);
+            }
+          };
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = (err) => reject(err);
+          reader.readAsDataURL(file);
+        });
+
+        showProgress("Uploading to Server...");
+
+        const payload = {
+          title: document.getElementById("matTitle").value,
+          subject: document.getElementById("matSubject").value,
+          class_level: document.getElementById("matClass").value,
+          material_type: document.getElementById("matType").value,
+          description: document.getElementById("matDesc").value,
+          due_date: document.getElementById("matDueDate").value,
+          file_name: file.name,
+          file_data: fileData
+        };
+
+        await new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", `${API_BASE}/materials/upload`);
+          xhr.setRequestHeader("Content-Type", "application/json");
+          xhr.setRequestHeader("Authorization", `Bearer ${token}`);
+
+          xhr.upload.onprogress = (evt) => {
+            if (evt.lengthComputable) {
+              const uploadPercent = 50 + Math.round((evt.loaded / evt.total) * 50);
+              updateProgress(uploadPercent);
+            }
+          };
+
+          xhr.onload = () => {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              resolve(JSON.parse(xhr.responseText));
+            } else {
+              try {
+                reject(new Error(JSON.parse(xhr.responseText).error || "Upload failed."));
+              } catch {
+                reject(new Error("Upload failed."));
+              }
+            }
+          };
+
+          xhr.onerror = () => reject(new Error("Network error during document upload."));
+          xhr.send(JSON.stringify(payload));
+        });
+
+        updateProgress(100);
+        setTimeout(() => {
+          hideProgress();
+          alert("Class document published successfully!");
+          document.getElementById("materialForm").reset();
+        }, 300);
+
+      } catch (err) {
+        hideProgress();
+        alert(err.message);
+      }
+    }
+
+    function logout() {
+      localStorage.clear();
+      window.location.href = "login.html";
+    }
+
+    // Initialize dropdown on page load
+    populateStudentDropdown();
+  </script>
+</body>
+</html>
